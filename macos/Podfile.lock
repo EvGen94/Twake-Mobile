@@ -1,7 +1,7 @@
 PODS:
-  - connectivity_macos (0.0.1):
+  - connectivity_plus_macos (0.0.1):
     - FlutterMacOS
-    - Reachability
+    - ReachabilitySwift
   - emoji_picker_flutter (0.0.1):
     - FlutterMacOS
   - Firebase/CoreOnly (8.14.0):
@@ -76,8 +76,8 @@ PODS:
     - FlutterMacOS
   - path_provider_macos (0.0.1):
     - FlutterMacOS
-  - PromisesObjC (2.0.0)
-  - Reachability (3.2)
+  - PromisesObjC (2.1.0)
+  - ReachabilitySwift (5.0.0)
   - Sentry (7.1.4):
     - Sentry/Core (= 7.1.4)
   - Sentry/Core (7.1.4)
@@ -94,7 +94,7 @@ PODS:
     - FlutterMacOS
 
 DEPENDENCIES:
-  - connectivity_macos (from `Flutter/ephemeral/.symlinks/plugins/connectivity_macos/macos`)
+  - connectivity_plus_macos (from `Flutter/ephemeral/.symlinks/plugins/connectivity_plus_macos/macos`)
   - emoji_picker_flutter (from `Flutter/ephemeral/.symlinks/plugins/emoji_picker_flutter/macos`)
   - firebase_core (from `Flutter/ephemeral/.symlinks/plugins/firebase_core/macos`)
   - firebase_messaging (from `Flutter/ephemeral/.symlinks/plugins/firebase_messaging/macos`)
@@ -119,12 +119,12 @@ SPEC REPOS:
     - GoogleUtilities
     - nanopb
     - PromisesObjC
-    - Reachability
+    - ReachabilitySwift
     - Sentry
 
 EXTERNAL SOURCES:
-  connectivity_macos:
-    :path: Flutter/ephemeral/.symlinks/plugins/connectivity_macos/macos
+  connectivity_plus_macos:
+    :path: Flutter/ephemeral/.symlinks/plugins/connectivity_plus_macos/macos
   emoji_picker_flutter:
     :path: Flutter/ephemeral/.symlinks/plugins/emoji_picker_flutter/macos
   firebase_core:
@@ -149,7 +149,7 @@ EXTERNAL SOURCES:
     :path: Flutter/ephemeral/.symlinks/plugins/url_launcher_macos/macos
 
 SPEC CHECKSUMS:
-  connectivity_macos: 5dae6ee11d320fac7c05f0d08bd08fc32b5514d9
+  connectivity_plus_macos: f6e86fd000e971d361e54b5afcadc8c8fa773308
   emoji_picker_flutter: 533634326b1c5de9a181ba14b9758e6dfe967a20
   Firebase: 7e8fe528c161b9271d365217a74c16aaf834578e
   firebase_core: 1b221df9828666916f22bae151f1b6d139c84e5a
@@ -166,14 +166,14 @@ SPEC CHECKSUMS:
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   package_info_plus_macos: f010621b07802a241d96d01876d6705f15e77c1c
   path_provider_macos: 160cab0d5461f0c0e02995469a98f24bdb9a3f1f
-  PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
-  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  PromisesObjC: 99b6f43f9e1044bd87a95a60beff28c2c44ddb72
+  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   Sentry: 1d3eb1a25f8c5333c88dd5603904a6d461cd9fcf
   sentry_flutter: f20d4f199442900fbdab2b8496f1d2091d8b94d9
-  shared_preferences_macos: a64dc611287ed6cbe28fd1297898db1336975727
+  shared_preferences_macos: 480ce071d0666e37cef23fe6c702293a3d21799e
   sqflite: a5789cceda41d54d23f31d6de539d65bb14100ea
-  url_launcher_macos: 597e05b8e514239626bcf4a850fcf9ef5c856ec3
+  url_launcher_macos: 45af3d61de06997666568a7149c1be98b41c95d4
 
-PODFILE CHECKSUM: c7161fcf45d4fd9025dc0f48a76d6e64e52f8176
+PODFILE CHECKSUM: b259708c22dc81a9c686936300884883e88a7b04
 
 COCOAPODS: 1.11.2

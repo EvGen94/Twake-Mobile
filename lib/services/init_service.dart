@@ -29,6 +29,7 @@ class InitService {
       globals.channelIdSet = null;
       globals.threadIdSet = null;
     } else {
+      await FirebaseMessaging.instance.requestPermission();
       final String fcmToken = (await FirebaseMessaging.instance.getToken())!;
       globals = Globals(host: host, fcmToken: fcmToken);
       globals.save();

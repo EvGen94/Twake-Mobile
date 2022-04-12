@@ -5,7 +5,7 @@
 import FlutterMacOS
 import Foundation
 
-import connectivity_macos
+import connectivity_plus_macos
 import emoji_picker_flutter
 import firebase_core
 import firebase_messaging

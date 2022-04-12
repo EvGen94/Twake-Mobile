@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:connectivity/connectivity.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:twake/models/base_model/base_model.dart';
 import 'package:twake/services/service_bundle.dart';
@@ -123,18 +123,17 @@ class Globals extends BaseModel {
     return _globals;
   }
 
-  factory Globals({
-    required String host,
-    ChannelsType channelsType: ChannelsType.commons,
-    String? token,
-    required String fcmToken,
-    String? userId,
-    String? companyId,
-    String? workspaceId,
-    String? channelId,
-    String? threadId,
-    String? helpUrl
-  }) {
+  factory Globals(
+      {required String host,
+      ChannelsType channelsType: ChannelsType.commons,
+      String? token,
+      required String fcmToken,
+      String? userId,
+      String? companyId,
+      String? workspaceId,
+      String? channelId,
+      String? threadId,
+      String? helpUrl}) {
     if (host.endsWith('/')) {
       host = host.substring(0, host.length - 1);
     }
@@ -142,38 +141,37 @@ class Globals extends BaseModel {
       host = 'https://$host';
     }
     _globals = Globals._(
-      host: host,
-      channelsType: channelsType,
-      token: token,
-      fcmToken: fcmToken,
-      userId: userId,
-      companyId: companyId,
-      workspaceId: workspaceId,
-      channelId: channelId,
-      threadId: threadId,
-      helpUrl: helpUrl
-    );
+        host: host,
+        channelsType: channelsType,
+        token: token,
+        fcmToken: fcmToken,
+        userId: userId,
+        companyId: companyId,
+        workspaceId: workspaceId,
+        channelId: channelId,
+        threadId: threadId,
+        helpUrl: helpUrl);
 
     return _globals;
   }
 
-  Globals._({
-    required this.host,
-    required this.channelsType,
-    this.token,
-    required this.fcmToken,
-    this.userId,
-    this.companyId,
-    this.workspaceId,
-    this.channelId,
-    this.threadId,
-    this.helpUrl
-  }) {
+  Globals._(
+      {required this.host,
+      required this.channelsType,
+      this.token,
+      required this.fcmToken,
+      this.userId,
+      this.companyId,
+      this.workspaceId,
+      this.channelId,
+      this.threadId,
+      this.helpUrl}) {
     // set up connection listener
     void onConnectionChange(ConnectivityResult state) {
       switch (state) {
         case ConnectivityResult.mobile:
         case ConnectivityResult.wifi:
+        case ConnectivityResult.ethernet:
           ApiService.instance.get(endpoint: Endpoint.info).then((_) {
             if (!isNetworkConnected) {
               isNetworkConnected = true;
