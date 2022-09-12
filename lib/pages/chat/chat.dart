@@ -88,9 +88,8 @@ class Chat<T extends BaseChannelsCubit> extends StatelessWidget {
                       return ChatHeader(
                           isDirect: selectedChannel.isDirect,
                           isPrivate: selectedChannel.isPrivate,
-                          userId: selectedChannel.members.isNotEmpty
-                              ? selectedChannel.members.first
-                              : null,
+                          users: selectedChannel.members,
+                          channelId: selectedChannel.id,
                           name: selectedChannel.name,
                           icon: Emojis.getByName(selectedChannel.icon ?? ''),
                           avatars: selectedChannel.isDirect

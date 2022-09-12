@@ -5,7 +5,8 @@ part 'socketio_event.g.dart';
 @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class SocketIOEvent {
   final String name;
-  final MessageData data;
+  // final MessageData data;
+  final WritingData data;
 
   const SocketIOEvent({
     required this.name,
@@ -48,9 +49,50 @@ class MessageData {
   }
 }
 
+@JsonSerializable(fieldRename: FieldRename.snake)
+class WritingData {
+  final String type;
+  final WritingEvent event;
+
+  const WritingData({
+    required this.type,
+    required this.event,
+  });
+
+  factory WritingData.fromJson(Map<String, dynamic> json) {
+    return _$WritingDataFromJson(json);
+  }
+
+  Map<String, dynamic> toJson() {
+    return _$WritingDataToJson(this);
+  }
+}
+@JsonSerializable(fieldRename: FieldRename.snake)
+class WritingEvent {
+  @JsonKey(name: 'thread_id')
+  final String threadId;
+  @JsonKey(name: 'channel_id')
+  final String channelId;
+  @JsonKey(name: 'user_id')
+  final String userId;
+  final String name;
+  @JsonKey(name: 'is_writing')
+  final bool isWriting;
+
+  WritingEvent(
+      this.threadId, this.channelId, this.name, this.userId, this.isWriting);
+  factory WritingEvent.fromJson(Map<String, dynamic> json) {
+    return _$WritingEventFromJson(json);
+  }
+
+  Map<String, dynamic> toJson() {
+    return _$WritingEventToJson(this);
+  }
+}
+
 enum IOEventAction {
   @JsonValue('remove')
   remove,
   @JsonValue('update')
-  update
+  update,
 }

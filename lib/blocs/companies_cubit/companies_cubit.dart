@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
+import 'package:twake/blocs/writing_cubit/writing_cubit.dart';
 import 'package:twake/models/globals/globals.dart';
 import 'package:twake/repositories/companies_repository.dart';
 import 'package:twake/services/service_bundle.dart';
@@ -11,6 +13,7 @@ export 'companies_state.dart';
 
 class CompaniesCubit extends Cubit<CompaniesState> {
   late final CompaniesRepository _repository;
+  final _socketIOEventStream = SocketIOService.instance.eventStream;
 
   CompaniesCubit({CompaniesRepository? repository})
       : super(CompaniesInitial()) {
@@ -18,9 +21,12 @@ class CompaniesCubit extends Cubit<CompaniesState> {
       repository = CompaniesRepository();
     }
     _repository = repository;
+    listenToIsWriting();
   }
 
   Future<bool> fetch() async {
+    SynchronizationService.instance.subscribeToIsWriting();
+
     final streamCompanies = _repository.fetch();
 
     Company? selected;
@@ -72,6 +78,13 @@ class CompaniesCubit extends Cubit<CompaniesState> {
     selected.selectedWorkspace = workspaceId;
 
     _repository.saveOne(company: selected);
+  }
+
+  Future<void> listenToIsWriting() async {
+    await for (final eventStream in _socketIOEventStream) {
+      Get.find<WritingCubit>().emitNewWriting(eventStream.data.event.userId,
+          eventStream.data.event.name, eventStream.data.event.channelId);
+    }
   }
 
   Company? getSelectedCompany() {
