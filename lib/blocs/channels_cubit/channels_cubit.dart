@@ -144,7 +144,10 @@ abstract class BaseChannelsCubit extends Cubit<ChannelsState> {
 
     return members;
   }
+ Future<void> fetchUsersOnlineStatus() async {
+_repository.fetchUsersOnlineStatus();
 
+ }
   Future<bool> addMembers({
     required Channel channel,
     required List<String> usersToAdd,

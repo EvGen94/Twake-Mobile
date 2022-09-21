@@ -253,14 +253,18 @@ class _HomeWidgetState extends State<HomeWidget> with WidgetsBindingObserver {
                 ),
                 Align(
                   alignment: Alignment.center,
-                  child: Image.asset(
-                    imageTwakeHomeLogo,
-                    width: 63,
-                    height: 15,
-                    color: Theme.of(context)
-                        .colorScheme
-                        .primaryContainer
-                        .withOpacity(0.9),
+                  child: GestureDetector(
+                    onTap: () =>
+                        Get.find<ChannelsCubit>().fetchUsersOnlineStatus(),
+                    child: Image.asset(
+                      imageTwakeHomeLogo,
+                      width: 63,
+                      height: 15,
+                      color: Theme.of(context)
+                          .colorScheme
+                          .primaryContainer
+                          .withOpacity(0.9),
+                    ),
                   ),
                 ),
                 _buildHeaderActionButtons()
